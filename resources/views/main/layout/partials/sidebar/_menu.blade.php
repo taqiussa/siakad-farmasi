@@ -18,7 +18,17 @@
                     <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="?page=pages/user-profile/activity"><span class="menu-bullet"><span class="bullet bullet-dot"></span></span><span class="menu-title">Activity</span></a><!--end:Menu link--></div><!--end:Menu item-->
                 </div><!--end:Menu sub-->
             </div><!--end:Menu item--><!--begin:Menu item-->
-            
+            <li class="nav-item">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <i class="nav-icon fas fa-th"></i> Logout
+                </a>
+                
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+                </form>
+                </li>
         </div>
         <!--end::Menu-->
     </div>

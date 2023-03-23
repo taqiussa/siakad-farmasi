@@ -47,12 +47,14 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Vendor Stylesheets(used for this page only)-->
-    <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ url('admin/assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
+        type="text/css" />
     <!--end::Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
 </head>
 <!--end::Head-->
@@ -63,25 +65,89 @@ License: For each use you must have a valid license purchased only from above li
     data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true"
     data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
 
+    <script src="{{ url('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ url('admin/assets/js/scripts.bundle.js') }}"></script>
+
+    {{-- /Users/dhananghadiyanto/Documents/www/laravel/theme/public/admin/assets/plugins/custom/virtualselect --}}
+    <link rel="stylesheet" href="{{ url('admin/assets/plugins/custom/virtualselect/virtual-select.min.css') }}">
+    <script type="text/javascript" src="{{ url('admin/assets/plugins/custom/virtualselect/virtual-select.min.js') }}">
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(".date").daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 1960,
+                maxYear: parseInt(moment().format("YYYY"), 10),
+                locale: {
+                    format: 'DD-MM-YYYY'
+                },
+                timePicker: false,
+            });
+
+            $(".datetime").daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 1960,
+                maxYear: parseInt(moment().format("YYYY"), 10),
+                locale: {
+                    format: 'DD-MM-YYYY hh:mm A'
+                },
+                timePicker: true,
+            });
+
+            VirtualSelect.init({
+                ele: '.virtual',
+                maxWidth: '850px',
+            });
+
+            $('.numberonly').keypress(function(e) {
+
+                var charCode = (e.which) ? e.which : event.keyCode
+
+                if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                    return false;
+
+            });
+
+        });
+
+        function loading() {
+            $(".btn").attr("disabled", true);
+            Swal.fire({
+                title: 'Mohon Tunggu !',
+                html: 'Data Sedang Diproses',
+                icon: 'info',
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+
+                }
+            })
+        }
+
+        function finish() {
+            $(".btn").attr("disabled", false);
+            swal.close();
+        }
+    </script>
+
+
+    @include('main.flash-message')
     @include('main.partials.theme-mode._init')
     @include('main.layout._default')
     @include('main.partials._scrolltop')
 
-    <!--begin::Modals-->
-    {{-- <?php include 'partials/modals/_upgrade-plan.php'; ?>
-    <?php include 'partials/modals/create-app/_main.php'; ?>
-    <?php include 'partials/modals/_new-target.php'; ?>
-    <?php include 'partials/modals/_view-users.php'; ?>
-    <?php include 'partials/modals/users-search/_main.php'; ?>
-    <?php include 'partials/modals/_invite-friends.php'; ?> --}}
-    <!--end::Modals-->
     <!--begin::Javascript-->
     <script>
         var hostUrl = "assets/";
     </script>
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="{{ url('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ url('admin/assets/js/scripts.bundle.js') }}"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Vendors Javascript(used for this page only)-->
     <script src="{{ url('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
@@ -112,3 +178,4 @@ License: For each use you must have a valid license purchased only from above li
 <!--end::Body-->
 
 </html>
+@include('main.modal')

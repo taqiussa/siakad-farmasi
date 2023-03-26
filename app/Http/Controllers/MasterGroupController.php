@@ -252,7 +252,7 @@ class MasterGroupController extends Controller
             } catch (Exception $e) {
                 $this->res  = $e->getMessage();
                 $this->state = "0";
-                return Redirect('/get_master_menu/' . $request->id_master_aplikasi)->with($this->res);
+                return Redirect('/master_group/get_master_menu/' . $request->id_master_aplikasi)->with($this->res);
             }
         }
     }

@@ -23,10 +23,9 @@
                         </div>
                     @endif
                 </td>
-                <td><a class="btn btn-warning btn-xs  tombol-$i" id="aksi- {{ $item->id_master_aplikasi }}"
-                        href="{{ URL::to('/edit_master_aplikasi/' . $item->id_master_aplikasi) }}">  <i class="fa-solid fa-pencil"></i> Edit</a>
-                    <button class="btn btn-danger btn-xs  tombol-{{$item->id_master_aplikasi}}" id="aksi-delete-{{ $item->id_master_aplikasi }}"
-                        onclick="delete_data('{{ $item->id_master_aplikasi }}')"> <i class="fa-solid fa-trash"></i> Hapus</a>
+                <td><a class="btn btn-success btn-xs" id="aksi- {{ $item->id_master_aplikasi }}"
+                        href="{{ URL::to('/master_menu/get_master_menu/' . $item->id_master_aplikasi) }}"> <i
+                            class="fa-solid fa-bars"></i> Menu</a>
                 </td>
             </tr>
         @endforeach

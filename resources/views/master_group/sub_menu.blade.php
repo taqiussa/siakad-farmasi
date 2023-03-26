@@ -18,8 +18,6 @@
 
             fetch_user_data();
 
-            // document.getElementById("search").addEventListener("keyup",setTimeout(fetch_user_data(),1000));
-
         });
 
         function delay(callback, ms) {
@@ -37,16 +35,22 @@
         function fetch_user_data() {
             var page = document.getElementById("page").value;
             var search = document.getElementById("search").value;
+            var id_master_menu = document.getElementById("id_master_menu").value;
+            // alert(id_master_menu);
+            // return false();
+            // loading();
             $.ajax({
                 type: "get",
-                url: "/get_master_aplikasi?page=" + page + "&search=" + search,
+                url: "/master_menu/get_sub_menu_pagination/?id_master_menu=" + id_master_menu + "&page=" + page +
+                    "&search=" + search,
                 success: function(data) {
+                    // finish();
                     $('#data_table').html(data);
                 }
             });
         }
 
-        function delete_data(id_master_aplikasi) {
+        function delete_data(id_master_modul) {
             Swal.fire({
                 title: "Konfirmasi Delete",
                 text: "Lanjutkan Menghapus data ?",
@@ -59,7 +63,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "get",
-                        url: "/delete_master_aplikasi/" + id_master_aplikasi,
+                        url: "/master_menu/delete_sub_menu/" + id_master_modul,
                         beforeSend: function() {
                             loading();
                         },
@@ -83,31 +87,35 @@
     </script>
     <div class="card bg-light shadow-sm">
         <div class="card-header">
-            <h3 class="card-title"></h3>
-            <div class="card-toolbar">
-                <a href="{{ URL::to('/add_master_aplikasi/') }}" type="button" class="btn btn-primary" data-bs-toggle="tooltip"
-                    data-bs-original-title="Coming Soon" data-kt-initialized="1">
-                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                    <span class="svg-icon svg-icon-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
-                                transform="rotate(-90 11.364 20.364)" fill="currentColor"></rect>
-                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1"
-                                fill="currentColor"></rect>
-                        </svg></span>
-                    Tambah Master Aplikasi
-                </a>
+            <div class="card-title m-0">
+                <div class="symbol symbol-45px w-45px bg-light me-5">
+                    <i class='fa {{ $master_menu->icon }} '></i>
+                </div>
+                <a href="#" class="fs-4 fw-bold text-hover-primary text-gray-600 m-0">{{ $master_menu->nama_menu }}</a>
             </div>
+            <div class="card-toolbar">
+                <div class="d-flex mb-4">
+                    <a href="{{ URL::to('/get_master_menu/' . $master_menu->id_master_aplikasi) }}"
+                        class="btn btn-sm btn-warning btn-active-color-primary me-3">
+                        <i class="bi bi-box-arrow-in-left"></i>
+                        Kembali
+                    </a>
+                    <a href="{{ URL::to('/' . $add_submenu . '/' . $master_menu->id_master_menu) }}"
+                        class="btn btn-sm btn-primary me-3"> <i class="bi bi-database-add"></i> Tambah Menu Modul</a>
+                </div>
+            </div>
+
         </div>
         <div class="card-body card-scroll">
 
-            <form method="get" action="/master_aplikasi">
-                <div class="d-flex align-items-center position-relative my-1">
-                    <input type="text" data-kt-docs-table-filter="search" name="search" id="search"
-                        class="form-control form-control-solid w-250px ps-15" placeholder="Cari Nama Aplikasi" />
-                </div>
-            </form>
-            <input readonly type="hidden" name="page" id="page" class="form-control form-control-solid w-250px ps-15" />
+            <div class="d-flex align-items-center position-relative my-1">
+                <input type="text" data-kt-docs-table-filter="search" name="search" id="search"
+                    class="form-control form-control-solid w-250px ps-15" placeholder="Cari Nama Sub Menu" />
+            </div>
+            <input readonly type="hidden" name="page" id="page"
+                class="form-control form-control-solid w-250px ps-15" />
+            <input readonly type="hidden" name="id_master_menu" id="id_master_menu"
+                value="{{ $master_menu->id_master_menu }}" class="form-control form-control-solid w-250px ps-15" />
             <div id="data_table">
             </div>
 

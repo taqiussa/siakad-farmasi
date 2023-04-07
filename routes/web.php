@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MasterAplikasiController as ControllersMasterAplikasiController;
 use App\Http\Controllers\MasterMenuController as ControllersMasterMenuController;
 use App\Http\Controllers\MasterGroupController as ControllersMasterGroupController;
+use App\Http\Controllers\MasterPenggunaController as ControllersMasterPenggunaController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\AksesModul;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,18 +53,36 @@ Route::controller(ControllersMasterMenuController::class)->group(function () {
     Route::get('master_menu/delete_sub_menu/{id}', 'DeleteSubMenu');
 });
 
-Route::controller(ControllersMasterGroupController::class)->group(function () {
-    Route::get('master_group', 'index')->name('master_menu.index');
-    Route::get('master_group/get_master_aplikasi', 'GetMasterAplikasi');
-    Route::get('master_group/get_master_group/{id}', 'GetMasterGroup');
-    Route::get('master_group/get_master_group_pagination', 'GetMasterGroupPagination');
-    Route::get('master_group/add_master_group/{id}', 'AddMasterGroup');
-    Route::get('master_group/delete_master_group/{id}', 'DeleteMasterGroup');
-    Route::post('master_group/insert_master_group', 'InsertMasterGroup');
-    Route::get('master_group/edit_master_group/{id}', 'EditMasterGroup');
-    Route::get('master_group/delete_master_group/{id}', 'DeleteMasterGroup');
-    Route::get('master_group/get_akses_aplikasi/{id}', 'GetAksesAplikasi');
-    Route::post('master_group/insert_akses', 'InsertAkses');
+
+Route::middleware(['akses'])->group(function(){
+    Route::controller(ControllersMasterGroupController::class)->group(function () {
+        Route::get('master_group', 'index')->name('master_menu.index');
+        Route::get('master_group/get_master_aplikasi', 'GetMasterAplikasi');
+        Route::get('master_group/get_master_group/{id}', 'GetMasterGroup');
+        Route::get('master_group/get_master_group_pagination', 'GetMasterGroupPagination');
+        Route::get('master_group/add_master_group/{id}', 'AddMasterGroup');
+        Route::get('master_group/delete_master_group/{id}', 'DeleteMasterGroup');
+        Route::post('master_group/insert_master_group', 'InsertMasterGroup');
+        Route::get('master_group/edit_master_group/{id}', 'EditMasterGroup');
+        Route::get('master_group/delete_master_group/{id}', 'DeleteMasterGroup');
+        Route::get('master_group/get_akses_aplikasi/{id}', 'GetAksesAplikasi');
+        Route::post('master_group/insert_akses', 'InsertAkses');
+    });
+    
+    Route::controller(ControllersMasterPenggunaController::class)->group(function () {
+        Route::get('master_pengguna', 'index')->name('master_pengguna.index');
+        Route::get('master_pengguna/get_pengguna_pagination', 'GetPenggunaPagination');
+        Route::get('master_pengguna/add_pengguna', 'AddPengguna');
+        Route::get('master_pengguna/edit_pengguna/{id}', 'EditPengguna');
+        Route::get('master_pengguna/delete_pengguna/{id}', 'DeletePengguna');
+        Route::get('master_pengguna/get_master_group/{id}', 'GetAksesPengguna');
+        Route::get('master_pengguna/get_group_pengguna_pagination', 'GetGroupPenggunaPagination');
+        Route::post('master_pengguna/add_akses', 'AddAkses');
+        Route::post('master_pengguna/get_master_group', 'GetMasterGroup');
+        Route::post('master_pengguna/insert_trans_user_group', 'InsertTransUserGroup');
+        Route::post('master_pengguna/insert_pengguna', 'InsertPengguna');
+        Route::post('master_pengguna/update_password', 'UpdatePassword');
+    });
 });
 
 // Route::get('/master_aplikasi',[ControllersMasterAplikasiController::class,'get_master_aplikasi']);

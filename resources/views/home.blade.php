@@ -10,7 +10,7 @@
                 </div>
             @endif
 
-            <b> {{ Auth::user()->name }} </b> {{ __('You are logged in!') }}
+            <b> {{ Auth::user()->id_user }} </b> {{ __('You are logged in!') }}
         </div>
     </div>
 @endsection

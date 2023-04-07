@@ -27,20 +27,20 @@
 
 @if ($message = Session::get('error'))
     <script>
-        toastr.success('{{ $message }}', "Error");
+        toastr.error('{{ $message }}', "Error");
     </script>
 @endif
 
 @if ($message = Session::get('warning'))
     <script>
-        toastr.success('{{ $message }}', "Warning");
+        toastr.warning('{{ $message }}', "Warning");
     </script>
 @endif
 
 
 @if ($message = Session::get('info'))
     <script>
-        toastr.info('{{ $message }}', "Warning");
+        toastr.info('{{ $message }}', "Info");
     </script>
 @endif
 

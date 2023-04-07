@@ -31,6 +31,9 @@
             <select class="{{ $item['class'] }}" {{ $item['property'] }} {{ $item['required'] }}
                 name="{{ $item['name'] }}" id="{{ $item['name'] }}" placeholder="{{ $item['placeholder'] }}"
                 data-search="true" data-silent-initial-value-set="true">
+                <option value=''>
+                    {{ $item['placeholder'] }} </option>
+                    @if($item['data'])
                 @foreach ($item['data'] as $row)
                     <option value='{{ $row['id'] }}'
                     @if (old($item['name'])) @if (old($item['name']) == $row['id']) Selected @endif @else
@@ -38,6 +41,7 @@
                         >
                         {{ $row['value'] }} </option>
                 @endforeach
+                @endif
             </select>
             <br>
         </div>

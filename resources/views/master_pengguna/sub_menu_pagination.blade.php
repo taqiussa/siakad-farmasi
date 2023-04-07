@@ -21,7 +21,7 @@
                 <td> {{ $item->status_data }} </td>
                 <td>
                     <a class="btn btn-warning btn-xs  tombol-$i" id="aksi-{{ $item->id_master_modul }}"
-                        href="{{ URL::to('/master_group/edit_sub_menu/' . $item->id_master_modul) }}"> <i class="fa-solid fa-pencil"></i> Edit</a>
+                        href="{{ URL::to('/edit_sub_menu/' . $item->id_master_modul) }}"> <i class="fa-solid fa-pencil"></i> Edit</a>
                     <button class="btn btn-danger btn-xs  tombol-{{ $item->id_master_modul }}"
                         id="aksi-delete-{{ $item->id_master_modul }}"
                         onclick="delete_data('{{ $item->id_master_modul }}')"> <i class="fa-solid fa-trash"></i>

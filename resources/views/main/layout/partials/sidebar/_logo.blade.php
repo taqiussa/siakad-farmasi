@@ -4,6 +4,7 @@
     <a href="?page=index">
         <img alt="Logo" src="{{ url('admin/assets/media/logos/default-dark.svg') }}" class="h-25px app-sidebar-logo-default" />
         <img alt="Logo" src="{{ url('admin/assets/media/logos/default-small.svg') }}"
+        {{-- {{getApplikasi()->nama_aplikasi}} --}}
             class="h-20px app-sidebar-logo-minimize" />{{ config('app.name') }}
     </a>
     <!--end::Logo image-->

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController as ControllersHomeController;
 use App\Http\Controllers\MasterAplikasiController as ControllersMasterAplikasiController;
 use App\Http\Controllers\MasterMenuController as ControllersMasterMenuController;
 use App\Http\Controllers\MasterGroupController as ControllersMasterGroupController;
@@ -26,6 +27,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::controller(ControllersHomeController::class)->group(function () {
+    Route::get('home', 'index')->name('home.index');
+    Route::get('home/get_group_pengguna_pagination', 'GetGroupPenggunaPagination');
+});
 
 Route::controller(ControllersMasterAplikasiController::class)->group(function () {
     Route::get('master_aplikasi', 'index')->name('master_aplikasi.index');

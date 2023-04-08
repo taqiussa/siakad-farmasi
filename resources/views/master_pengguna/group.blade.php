@@ -95,7 +95,7 @@
             <div class="d-flex flex-wrap flex-sm-nowrap mb-6">
                 <div
                     class="d-flex flex-center flex-shrink-0 bg-light rounded w-100px h-100px w-lg-150px h-lg-150px me-7 mb-4">
-                    <img class="mw-100px mw-lg-100px" src="/images/{{ $master_aplikasi->image }}" alt="image">
+                    <img class="mw-100px mw-lg-100px" src="/images/logo/{{ $master_aplikasi->image }}" alt="image">
                 </div>
                 <div class="flex-grow-1">
                     <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">

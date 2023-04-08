@@ -54,7 +54,7 @@
         <div class="col-lg-8">
             <?php
             if ($item['value']) {
-                $infoPath = pathinfo(public_path("/images/$item[value]"));
+                $infoPath = pathinfo(public_path("/images/logo/$item[value]"));
                 $extension = $infoPath['extension'];
             } else {
                 $extension = '';
@@ -63,10 +63,10 @@
             ?>
             @if ($item['value'] && ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'svg'))
                 <div class="image-input-wrapper w-125px h-125px ">
-                    <img src="/images/{{ $item['value'] }}" width="125" height="125" />
+                    <img src="/images/logo/{{ $item['value'] }}" width="125" height="125" />
                 </div>
             @elseif($item['value'])
-                <a type="button" target="_blank" href='/images/{{ $item['value'] }}' class="btn btn-xs btn-info"><i
+                <a type="button" target="_blank" href='/images/logo/{{ $item['value'] }}' class="btn btn-xs btn-info"><i
                         class="fa fa-list-ol"></i>Lihat File</a>
             @endif
             <input type="file" name="{{ $item['name'] }}" id="{{ $item['name'] }}" {{ $item['property'] }}

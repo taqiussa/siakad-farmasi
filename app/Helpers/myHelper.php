@@ -59,11 +59,22 @@ function group_by($key, $data)
     return $result;
 }
 
-function getApplikasi()
+function getApplikasidetail()
 {
     $aplikasi = DB::table('master_aplikasi')
         ->where('id_master_aplikasi', '6d920eeb-5be8-4346-a6cd-edcd26c95780')
         ->first();
-        
+
+    return   $aplikasi;
+}
+
+function getApplikasi()
+{
+    $aplikasi = DB::table('master_aplikasi')
+        ->join('trans_user_group', 'trans_user_group.id_master_aplikasi', '=', 'master_aplikasi.id_master_aplikasi')
+        ->where('trans_user_group.status_data', 'Aktif')
+        ->where('trans_user_group.id_user', Auth::user()->id_user)
+        ->get();
+
     return   $aplikasi;
 }

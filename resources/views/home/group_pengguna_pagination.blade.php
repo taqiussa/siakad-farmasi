@@ -12,12 +12,6 @@
                         <span
                             class="badge badge-light-success fw-bolder me-auto px-4 py-3">{{ $item->nama_aplikasi . ' - ' . $item->deskripsi }}</span>
                     </div>
-                    <div class="form-check form-switch form-check-custom form-check-solid">
-                        <input class="form-check-input" type="checkbox"
-                            onchange="ubah_status('{{ $item->id_trans_user_group }}');"
-                            name="{{ $item->id_trans_user_group }}" id="{{ $item->id_trans_user_group }}"
-                            @if ($item->status_data == 'Aktif') checked="checked" @endif>
-                    </div>
                 </div>
                 <div class="card-body p-9">
                     <div class="fs-3 fw-bolder text-dark">{{ $item->nama_group }}</div>
@@ -27,7 +21,7 @@
                         <div class="bg-success rounded h-4px" role="progressbar" style="width: 100%" aria-valuenow="100"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    {{-- <div class="d-flex flex-center mb-5">
+                    <div class="d-flex flex-center mb-5">
                         <button class="btn btn-sm btn-light-primary"><span class="svg-icon svg-icon-3">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -37,7 +31,7 @@
                                 </g>
                             </svg>
                         </span>Login Aplikasi</button>
-                    </div> --}}
+                    </div>
                 </div>
 
             </a>

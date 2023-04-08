@@ -40,24 +40,13 @@
                             @endif
 
                             <div class="menu-item"><a class="menu-link {{ $active }}"
-                                    href="{{ URL::to('/'.$item_sub_menu['path'])  }}"><span class="menu-bullet"><span> <i
+                                    href="{{ URL::to('/' . $item_sub_menu['path']) }}"><span class="menu-bullet"><span> <i
                                                 class='fa {{ $item_sub_menu['icon_modul'] }} '></i> </span></span><span
                                         class="menu-title">{{ $item_sub_menu['nama_modul'] }}</span></a></div>
                         @endforeach
                     </div>
                 </div>
             @endforeach
-            <li class="nav-item">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
-                    <i class="nav-icon fas fa-th"></i> Logout
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </li>
         </div>
         <!--end::Menu-->
     </div>

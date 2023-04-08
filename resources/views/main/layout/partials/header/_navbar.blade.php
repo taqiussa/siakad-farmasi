@@ -11,22 +11,73 @@
         <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
             data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
             data-kt-menu-placement="bottom-end">
-            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
             <span class="svg-icon svg-icon-2 svg-icon-md-1"><svg width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2" y="2" width="9" height="9" rx="2"
-                        fill="currentColor" />
-                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                        fill="currentColor" />
-                    <rect opacity="0.3" x="13" y="13" width="9" height="9"
-                        rx="2" fill="currentColor" />
-                    <rect opacity="0.3" x="2" y="13" width="9" height="9"
-                        rx="2" fill="currentColor" />
-                </svg>
-            </span>
-            <!--end::Svg Icon-->
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="9" height="9" rx="2"
+                    fill="currentColor" />
+                <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
+                    fill="currentColor" />
+                <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
+                    fill="currentColor" />
+                <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
+                    fill="currentColor" />
+            </svg>
+        </span>
         </div>
-        <!--layout-partial:partials/menus/_my-apps-menu.html-->
+
+        <!--begin::My apps-->
+        <div class="menu menu-sub menu-sub-dropdown menu-column w-100 w-sm-350px" data-kt-menu="true" style="">
+            <!--begin::Card-->
+            <div class="card">
+                <!--begin::Card header-->
+                <div class="card-header">
+                    <!--begin::Card title-->
+                    <div class="card-title">Aplikasi</div>
+                    <!--end::Card title-->
+
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar">
+                        <!--begin::Menu-->
+                        <button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n3"
+                            data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-end">
+                            <i class="ki-duotone ki-setting-3 fs-2"><span class="path1"></span><span
+                                    class="path2"></span><span class="path3"></span><span class="path4"></span><span
+                                    class="path5"></span></i> </button>
+
+                       
+                    </div>
+                    <!--end::Card toolbar-->
+                </div>
+                <!--end::Card header-->
+
+                <!--begin::Card body-->
+                <div class="card-body py-5">
+                    <!--begin::Scroll-->
+                    <div class="mh-450px scroll-y me-n5 pe-5">
+                        <!--begin::Row-->
+                        <div class="row g-2">
+                            <!--begin::Col-->
+                            @foreach (getApplikasi() as $item_aplikasi)
+                            <div class="col-4">
+                                <a href="#"
+                                    class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded py-4 px-3 mb-3">
+                                    <img src="/images/logo/{{$item_aplikasi->image}}"
+                                        class="w-25px h-25px mb-2" alt="">
+                                    <span class="fw-semibold">{{$item_aplikasi->nama_aplikasi}}</span>
+                                </a>
+                            </div>
+                            @endforeach
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Row-->
+                    </div>
+                    <!--end::Scroll-->
+                </div>
+                <!--end::Card body-->
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::My apps-->
         <!--end::Menu wrapper-->
     </div>
     <!--end::My apps links-->
@@ -35,15 +86,71 @@
         <!--layout-partial:partials/theme-mode/_main.html-->
     </div>
     <!--end::Theme mode-->
-    <!--begin::User menu-->
     <div class="app-navbar-item ms-1 ms-md-3" id="kt_header_user_menu_toggle">
         <!--begin::Menu wrapper-->
         <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
             data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
             data-kt-menu-placement="bottom-end">
-            <img src="{{ url('admin/assets/media/avatars/300-1.jpg') }}" alt="user" />
+            <img src="{{ url('admin/assets/media/avatars/300-1.jpg') }}" alt="user">
         </div>
-        <!--layout-partial:partials/menus/_user-account-menu.html-->
+
+        <!--begin::User account menu-->
+        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
+            data-kt-menu="true" style="">
+            <!--begin::Menu item-->
+            <div class="menu-item px-3">
+                <div class="menu-content d-flex align-items-center px-3">
+                    <!--begin::Avatar-->
+                    <div class="symbol symbol-50px me-5">
+                        <img alt="Logo" src="{{ url('admin/assets/media/avatars/300-1.jpg') }}">
+                    </div>
+                    <!--end::Avatar-->
+
+                    <!--begin::Username-->
+                    <div class="d-flex flex-column">
+                        <div class="fw-bold d-flex align-items-center fs-5">
+                            {{ Auth::user()->name }} <span
+                                class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2"></span>
+                        </div>
+
+                        <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">
+                            {{ Auth::user()->email }} </a>
+                    </div>
+                    <!--end::Username-->
+                </div>
+            </div>
+            <!--end::Menu item-->
+
+            <!--begin::Menu separator-->
+            <div class="separator my-2"></div>
+            <!--end::Menu separator-->
+
+            <!--begin::Menu item-->
+            <div class="menu-item px-5">
+                <a href="/metronic8/demo1/../demo1/account/overview.html" class="menu-link px-5">
+                    My Profile
+                </a>
+            </div>
+            <!--end::Menu item-->
+
+
+            <!--begin::Menu separator-->
+            <div class="separator my-2"></div>
+            <!--end::Menu separator-->
+
+            <!--begin::Menu item-->
+            <div class="menu-item px-5">
+
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();"
+                    class="menu-link px-5">
+                    Sign Out
+                </a>
+            </div>
+            <!--end::Menu item-->
+        </div>
+        <!--end::User account menu-->
         <!--end::Menu wrapper-->
     </div>
     <!--end::User menu-->

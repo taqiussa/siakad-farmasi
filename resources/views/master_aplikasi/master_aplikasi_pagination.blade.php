@@ -19,7 +19,7 @@
                 <td>
                     @if ($item->image)
                         <div class="image-input-wrapper w-125px h-125px ">
-                            <img src="/images/{{ $item->image }}" width="125" height="125" />
+                            <img src="/images/logo/{{ $item->image }}" width="125" height="125" />
                         </div>
                     @endif
                 </td>

@@ -26,15 +26,15 @@ class AksesModul
             ->select('master_menu.id_master_aplikasi', 'master_menu.nama_menu', 'master_menu.order', 'master_menu.icon', 'master_modul.nama_modul', 'master_modul.order as order_modul', 'master_modul.path', 'master_modul.status_data', 'master_modul.icon as icon_modul', 'trans_user_group.id_user')
             ->groupBy('master_menu.id_master_aplikasi', 'master_menu.nama_menu', 'master_menu.order', 'master_menu.icon', 'master_modul.nama_modul', 'master_modul.order', 'master_modul.path', 'master_modul.status_data', 'master_modul.icon', 'trans_user_group.id_user')
             ->where('trans_user_group.id_user', Auth::user()->id_user)
-            ->where('master_menu.id_master_aplikasi', '6d920eeb-5be8-4346-a6cd-edcd26c95780')
             ->where('master_modul.path', $request->segment(1)) 
+            ->where('master_menu.id_master_aplikasi', env('APP_ID')) 
             ->first();
             
         if(empty($menu)){
             return redirect('404');
             return false;
         }
- 
+//  dd($menu);
         return $next($request);
         
     }

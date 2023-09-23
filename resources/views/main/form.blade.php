@@ -1,15 +1,19 @@
-@if (
-    $item['type'] == 'text' ||
-        $item['type'] == 'hidden' ||
-        $item['type'] == 'url' ||
-        $item['type'] == 'email' ||
-        $item['type'] == 'password')
-    <div class="row mb-8">
-        @if ($item['type'] != 'hidden')
-            <div class="col-xl-4">
-                <div class=" {{ $item['required'] }} fs-6 fw-bold mt-2 mb-3">{{ $item['caption'] }}</div>
-            </div>
-        @endif
+<?php
+
+if($item['show'] == false){
+    $classhide = 'd-none';
+}else{
+    $classhide = '';
+}
+
+// var_dump($hidden);
+
+?>
+@if ($item['type'] == 'text' || $item['type'] == 'url' || $item['type'] == 'email' || $item['type'] == 'password')
+    <div class="row mb-8 {{$classhide}}" id="div_{{ $item['name'] }}">
+        <div class="col-xl-4">
+            <div class=" {{ $item['required'] }} fs-6 fw-bold mt-2 mb-3 ">{{ $item['caption'] }}</div>
+        </div>
         <div class="col-lg-8">
             <input type="{{ $item['type'] }}" class="form-control {{ $item['class'] }}"
                 placeholder="{{ $item['placeholder'] }}" id="{{ $item['name'] }}" name="{{ $item['name'] }}"
@@ -23,31 +27,31 @@
         </div>
     </div>
 @elseif ($item['type'] == 'select')
-    <div class="row mb-8">
+    <div class="row mb-8 {{$classhide}}" id="div_{{ $item['name'] }}">
         <div class="col-xl-4">
             <div class="{{ $item['required'] }} fs-6 fw-bold mt-2 mb-3">{{ $item['caption'] }}</div>
         </div>
         <div class="col-lg-8">
-            <select class="{{ $item['class'] }}" {{ $item['property'] }} {{ $item['required'] }}
-                name="{{ $item['name'] }}" id="{{ $item['name'] }}" placeholder="{{ $item['placeholder'] }}"
-                data-search="true" data-silent-initial-value-set="true">
+            <select class="form-select {{ $item['class'] }}" data-control="select2" {{ $item['property'] }}
+                {{ $item['required'] }} name="{{ $item['name'] }}" id="{{ $item['name'] }}"
+                placeholder="{{ $item['placeholder'] }}" data-search="true" data-silent-initial-value-set="true">
                 <option value=''>
                     {{ $item['placeholder'] }} </option>
-                    @if($item['data'])
-                @foreach ($item['data'] as $row)
-                    <option value='{{ $row['id'] }}'
-                    @if (old($item['name'])) @if (old($item['name']) == $row['id']) Selected @endif @else
-                        @if ($item['value'] == $row['id']) Selected @endif @endif
-                        >
-                        {{ $row['value'] }} </option>
-                @endforeach
+                @if ($item['data'])
+                    @foreach ($item['data'] as $row)
+                        <option value='{{ $row['id'] }}'
+                        @if (old($item['name'])) @if (old($item['name']) == $row['id']) Selected @endif @else
+                            @if ($item['value'] == $row['id']) Selected @endif @endif
+                            >
+                            {{ $row['value'] }} </option>
+                    @endforeach
                 @endif
             </select>
             <br>
         </div>
     </div>
 @elseif ($item['type'] == 'upload')
-    <div class="row mb-8">
+    <div class="row mb-8 {{$classhide}}" id="div_{{ $item['name'] }}">
         <div class="col-xl-4">
             <div class="{{ $item['required'] }} fs-6 fw-bold mt-2 mb-3">{{ $item['caption'] }}</div>
         </div>
@@ -66,8 +70,8 @@
                     <img src="/images/logo/{{ $item['value'] }}" width="125" height="125" />
                 </div>
             @elseif($item['value'])
-                <a type="button" target="_blank" href='/images/logo/{{ $item['value'] }}' class="btn btn-xs btn-info"><i
-                        class="fa fa-list-ol"></i>Lihat File</a>
+                <a type="button" target="_blank" href='/images/logo/{{ $item['value'] }}'
+                    class="btn btn-xs btn-info"><i class="fa fa-list-ol"></i>Lihat File</a>
             @endif
             <input type="file" name="{{ $item['name'] }}" id="{{ $item['name'] }}" {{ $item['property'] }}
                 {{ $item['required'] }} value="{{ old($item['name']) }}">

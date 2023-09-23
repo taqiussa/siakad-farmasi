@@ -1,0 +1,58 @@
+#versi docker-compose yang digunakan
+version: '3' 
+services:
+   #Konfigurasi service webapp
+    webapp:
+      build:
+         #posisi Dockerfile berada di path yg sama
+         context: ./src
+         #file dockerfile yang digunakan
+         dockerfile: Dockerfile.dev
+      #nama image hasil docker-compose build
+      image: php-8:v1
+      #nama container dari image web yang dijalankan
+      # container_name: "sia-akademik"
+      #setting port yg bisa diakses dr host adalah 8000 
+      #port 80 adalah port service webapp yang hanya dikenali di 
+      #internal network antar container
+      ports:
+         - 8092-8093:80
+      #persisten volume (tetap), Host : container
+      #sangat penting tidak hanya menggunakan volume dalam container
+      #karena volume yg ada pada container akan hilang saat 
+      #container tersebut di remove.
+      volumes:
+            - nfs-volume:/var/www/html
+   
+      #aturan jika container dalam status stop/exit maka akan 
+      #otomatis di restart oleh docker container ini. 
+      # restart: always
+      #membutuhkan service lain (db)
+      # network_mode: "host"
+      # Deploy replica container
+      # deploy:
+      #   mode: replicated
+      #   replicas: 2
+
+    # nginx :
+    #   image: nginx:latest
+    #   volumes:
+    #     - ../conf.d:/etc/nginx/conf.d
+    #   depends_on:
+    #     - webapp
+    #   ports:
+    #     - 80:80
+
+# pastikan!!! di server Deployment sebelum menjalankan 
+# docker-compose build sudah di create dulu Volumenya !!!
+# caranya : docker volume create [nama_volume]  
+volumes:
+    nfs-volume:
+       # setting agar volume (data) tdk dihapus 
+       # saat docker-compose down
+         # external : true
+         driver: local
+         driver_opts:
+            type: none
+            device: /Users/dhananghadiyanto/Documents/www/laravel/akademik/
+            o: bind

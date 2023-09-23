@@ -12,17 +12,17 @@
             data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
             data-kt-menu-placement="bottom-end">
             <span class="svg-icon svg-icon-2 svg-icon-md-1"><svg width="24" height="24" viewBox="0 0 24 24"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="2" width="9" height="9" rx="2"
-                    fill="currentColor" />
-                <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
-                    fill="currentColor" />
-                <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
-                    fill="currentColor" />
-                <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
-                    fill="currentColor" />
-            </svg>
-        </span>
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="9" height="9" rx="2"
+                        fill="currentColor" />
+                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2"
+                        fill="currentColor" />
+                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2"
+                        fill="currentColor" />
+                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
+                        fill="currentColor" />
+                </svg>
+            </span>
         </div>
 
         <!--begin::My apps-->
@@ -44,7 +44,7 @@
                                     class="path2"></span><span class="path3"></span><span class="path4"></span><span
                                     class="path5"></span></i> </button>
 
-                       
+
                     </div>
                     <!--end::Card toolbar-->
                 </div>
@@ -58,14 +58,14 @@
                         <div class="row g-2">
                             <!--begin::Col-->
                             @foreach (getApplikasi() as $item_aplikasi)
-                            <div class="col-4">
-                                <a href="#"
-                                    class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded py-4 px-3 mb-3">
-                                    <img src="/images/logo/{{$item_aplikasi->image}}"
-                                        class="w-25px h-25px mb-2" alt="">
-                                    <span class="fw-semibold">{{$item_aplikasi->nama_aplikasi}}</span>
-                                </a>
-                            </div>
+                                <div class="col-4">
+                                    <a href="#"
+                                        class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded py-4 px-3 mb-3">
+                                        <img src="/images/logo/{{ $item_aplikasi->image }}" class="w-25px h-25px mb-2"
+                                            alt="">
+                                        <span class="fw-semibold">{{ $item_aplikasi->nama_aplikasi }}</span>
+                                    </a>
+                                </div>
                             @endforeach
                             <!--end::Col-->
                         </div>
@@ -140,7 +140,6 @@
 
             <!--begin::Menu item-->
             <div class="menu-item px-5">
-
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"
@@ -148,6 +147,9 @@
                     Sign Out
                 </a>
             </div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+                </form>
             <!--end::Menu item-->
         </div>
         <!--end::User account menu-->

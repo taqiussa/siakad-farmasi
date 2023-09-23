@@ -95,7 +95,7 @@
                             <rect x="4.36396" y="11.364" width="16" height="2" rx="1"
                                 fill="currentColor"></rect>
                         </svg></span>
-                    Tambah Master Angkatan
+                    Tambah Master Angkatan, Checking Git Branch
                 </a>
             </div>
         </div>

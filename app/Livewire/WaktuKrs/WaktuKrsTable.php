@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Livewire\WaktuRemidi;
+namespace App\Livewire\WaktuKrs;
 
 use Livewire\Component;
 use Livewire\Attributes\On;
-class Table extends Component
+
+class WaktuKrsTable extends Component
 {
-
     public $count = 1;
-
-    // protected $listeners = ['delete' => 'delete'];
 
     public function render()
     {
-        return view('livewire.waktu-remidi.table');
+        return view('livewire.waktu-krs.waktu-krs-table');
     }
 
     public function confirm($id)
@@ -27,6 +25,7 @@ class Table extends Component
             ]
         );
     }
+
     #[on('delete')]
     public function delete($id)
     {

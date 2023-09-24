@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WaktuRemidiController extends Controller
+class WaktuKrsController extends Controller
 {
     public $search = '';
     public $data = [];
@@ -27,6 +27,7 @@ class WaktuRemidiController extends Controller
 
     public function tambah_data()
     {
-        
+        return view('waktu_remidi.add');
     }
+
 }

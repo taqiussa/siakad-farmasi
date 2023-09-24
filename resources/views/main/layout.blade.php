@@ -56,6 +56,9 @@ License: For each use you must have a valid license purchased only from above li
     <link href="{{ url('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -202,6 +205,9 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{ url('admin/assets/js/custom/utilities/modals/users-search.js') }}"></script>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
+
+    {{-- livewire --}}
+    @stack('scripts')
 </body>
 <!--end::Body-->
 

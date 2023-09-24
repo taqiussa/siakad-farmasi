@@ -220,3 +220,6 @@ Route::get('user_list', [App\Http\Controllers\backend\UsermanagementController::
 Route::get('/edit_user/{id}', [App\Http\Controllers\backend\UsermanagementController::class, 'UserEdit']);
 Route::post('/update_user/{id}', [App\Http\Controllers\backend\UsermanagementController::class, 'UserUpdate']);
 Route::get('/delete_user/{id}', [App\Http\Controllers\backend\UsermanagementController::class, 'UserDelete']);
+
+
+require __DIR__ . '/qius.php';

@@ -37,5 +37,8 @@ class WaktuKrsTable extends Component
                 'message' => 'Berhasil Menghapus Data'
             ]
         );
+
+        // return to_route('waktu_remidi')->with('error', 'berhasil hapus data');
+
     }
 }

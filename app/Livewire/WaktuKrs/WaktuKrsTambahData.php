@@ -57,14 +57,14 @@ class WaktuKrsTambahData extends Component
     {
         DB::connection('akademik')->table('siakad.waktu_krs')->insert($this->validate());
 
-        $this->dispatch(
-            'notyf',
-            [
-                'type' => 'success',
-                'message' => 'Berhasil Simpan Data'
-            ]
-        );
+        // $this->dispatch(
+        //     'notyf',
+        //     [
+        //         'type' => 'success',
+        //         'message' => 'Berhasil Simpan Data'
+        //     ]
+        // );
 
-        return to_route('waktu_remidi');
+        return to_route('waktu_remidi')->with('success', 'Master Kurikulum Berhasil Disimpan');
     }
 }

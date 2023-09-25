@@ -41,16 +41,6 @@ Route::controller(ControllersHomeController::class)->group(function () {
     Route::get('home/get_group_pengguna_pagination', 'GetGroupPenggunaPagination');
 });
 
-// Route::controller(ControllersMasterMahasiswaController::class)->group(function () {
-//     Route::get('master_mahasiswa', 'index')->name('master_mahasiswa.index');
-//     // Route::get('get_master_mahasiswa', 'GetMasterMahasiswa');
-//     // Route::get('add_master_mahasiswa', 'AddMasterMahasiswa');
-//     // Route::get('edit_master_mahasiswa/{id}', 'EditMasterMahasiswa');
-//     // Route::post('insert_master_mahasiswa', 'InsertMasterMahasiswa');
-//     // Route::get('delete_master_mahasiswa/{id}', 'DeleteMasterMahasiswa');
-// });
-
-
 Route::controller(ControllersMasterAplikasiController::class)->group(function () {
     Route::get('master_aplikasi', 'index')->name('master_aplikasi.index');
     Route::get('get_master_aplikasi', 'GetMasterAplikasi');
@@ -89,22 +79,22 @@ Route::controller(ControllersMasterDataController::class)->group(function () {
 
 Route::middleware(['akses'])->group(function(){
 
-    Route::controller(ControllersWaktuKrsController::class)->group(function () {
-        Route::get('waktu_krs', 'index')->name('waktu_krs.index');
-        Route::get('waktu_krs/add_waktu_krs', 'AddMasterAngkatanMahasiswa')->name('waktu_krs.add_waktu_krs');
-        Route::get('waktu_krs/get_waktu_krs', 'GetMasterWaktuKrs');
-        Route::get('waktu_krs/edit_waktu_krs/{id}', 'EditMasterWaktuKrs');
-        Route::post('waktu_krs/insert_waktu_krs', 'InsertMasterWaktuKrs');
-        Route::get('waktu_krs/delete_waktu_krs/{id}', 'DeleteMasterWaktuKrs');
-        Route::get('waktu_krs/detail_matakuliah/{id}', 'DetailMatakuliah');
-        Route::get('waktu_krs/get_matakuliah_pagination', 'GetMatakuliahPagination');
+    // Route::controller(ControllersWaktuKrsController::class)->group(function () {
+    //     Route::get('waktu_krs', 'index')->name('waktu_krs.index');
+    //     Route::get('waktu_krs/add_waktu_krs', 'AddMasterAngkatanMahasiswa')->name('waktu_krs.add_waktu_krs');
+    //     Route::get('waktu_krs/get_waktu_krs', 'GetMasterWaktuKrs');
+    //     Route::get('waktu_krs/edit_waktu_krs/{id}', 'EditMasterWaktuKrs');
+    //     Route::post('waktu_krs/insert_waktu_krs', 'InsertMasterWaktuKrs');
+    //     Route::get('waktu_krs/delete_waktu_krs/{id}', 'DeleteMasterWaktuKrs');
+    //     Route::get('waktu_krs/detail_matakuliah/{id}', 'DetailMatakuliah');
+    //     Route::get('waktu_krs/get_matakuliah_pagination', 'GetMatakuliahPagination');
         // Route::post('waktu_krs/insert_mahasiswa', 'InsertMahasiswa');
         // Route::get('waktu_krs/delete_mahasiswa/{id}', 'DeleteMahasiswa');
         // Route::get('waktu_krs/detail_tagihan_angkatan/{id}', 'DetailTagihanAngkatan');
         // Route::get('waktu_krs/get_tagihan_angkatan_pagination', 'GetTagihanAngkatanPagination');
         // Route::post('waktu_krs/insert_tagihan', 'InsertTagihan');
         // Route::get('waktu_krs/delete_tagihan/{id}', 'DeleteTagihan');
-    });
+    // });
 
     Route::controller(ControllersMasterKodePembayaranController::class)->group(function () {
         Route::get('master_kode_pembayaran', 'index')->name('master_kode_pembayaran.index');

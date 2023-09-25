@@ -1,5 +1,5 @@
 import './bootstrap';
-import './notyf';
+// import './notyf';
 //sweetalert2
 import Swal from 'sweetalert2';
 window.Swal = Swal;

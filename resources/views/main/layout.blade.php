@@ -145,25 +145,25 @@ License: For each use you must have a valid license purchased only from above li
             return ("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
         };
 
-        function loading() {
-            $(".btn").attr("disabled", true);
-            Swal.fire({
-                title: 'Mohon Tunggu !',
-                html: 'Data Sedang Diproses',
-                icon: 'info',
-                timerProgressBar: true,
-                allowOutsideClick: false,
-                didOpen: () => {
-                    Swal.showLoading()
+        // function loading() {
+        //     $(".btn").attr("disabled", true);
+        //     Swal.fire({
+        //         title: 'Mohon Tunggu !',
+        //         html: 'Data Sedang Diproses',
+        //         icon: 'info',
+        //         timerProgressBar: true,
+        //         allowOutsideClick: false,
+        //         didOpen: () => {
+        //             Swal.showLoading()
 
-                }
-            })
-        }
+        //         }
+        //     })
+        // }
 
-        function finish() {
-            $(".btn").attr("disabled", false);
-            swal.close();
-        }
+        // function finish() {
+        //     $(".btn").attr("disabled", false);
+        //     swal.close();
+        // }
     </script>
 
 

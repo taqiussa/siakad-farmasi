@@ -1,4 +1,13 @@
-<form wire:submit.prevent="simpan">
+<form wire:submit.prevent="simpan" class="card card-custom example example-compact">
+    <div class="card-header">
+        <h3 class="card-title"></h3>
+        <div class="card-toolbar">
+            <div class="example-tools justify-content-center">
+                <a href="{{ route('waktu_krs') }} " type="button" class="btn font-weight-bold btn-warning mr-2">
+                    <i class="bi bi-box-arrow-in-left"></i> Kembali</a>
+            </div>
+        </div>
+    </div>
     <div class="card-body">
         <div class="card shadow-sm p-10 ">
             <div class="row">

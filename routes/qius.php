@@ -8,6 +8,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'akses'])->group(function () {
 
-    Route::get('waktu_krs', WaktuKrsTable::class)->name('waktu_remidi');
+    Route::get('waktu_krs', WaktuKrsTable::class)->name('waktu_krs');
     Route::get('waktu_krs/add_waktu_krs', WaktuKrsTambahData::class)->name('waktu_krs.add_waktu_krs');
 });

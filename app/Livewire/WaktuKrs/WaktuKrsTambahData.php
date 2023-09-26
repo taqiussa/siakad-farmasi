@@ -163,10 +163,10 @@ class WaktuKrsTambahData extends Component
 
     public function mount()
     {
-        $this->tgl_mulai             = date('d-m-Y G:i A');
-        $this->tgl_selesai           = date('d-m-Y G:i A');
-        $this->tgl_toleransi_mulai   = date('d-m-Y G:i A');
-        $this->tgl_toleransi_selesai = date('d-m-Y G:i A');
+        $this->tgl_mulai             = date('d-m-Y g:i A');
+        $this->tgl_selesai           = date('d-m-Y g:i A');
+        $this->tgl_toleransi_mulai   = date('d-m-Y g:i A');
+        $this->tgl_toleransi_selesai = date('d-m-Y g:i A');
     }
 
     
@@ -181,8 +181,15 @@ class WaktuKrsTambahData extends Component
         $this->tgl_toleransi_mulai   = Carbon::createFromFormat('d-m-Y g:i A', $this->tgl_toleransi_mulai)->format('Y-m-d H:i');
         $this->tgl_toleransi_selesai = Carbon::createFromFormat('d-m-Y g:i A', $this->tgl_toleransi_selesai)->format('Y-m-d H:i');
 
-        DB::connection('akademik')->table('siakad.waktu_krs')->insert($this->validate());
+       
 
-        return to_route('waktu_krs')->with('success', 'Master Kurikulum Berhasil Disimpan');
+        try {
+            DB::connection('akademik')->table('siakad.waktu_krs')->insert($this->validate());
+            return to_route('waktu_krs')->with('success', 'Master Waktu KRS Berhasil Disimpan');
+        } catch (\Exception $e) {
+            $this->res  = $e->getMessage();
+            $this->state = "0";
+            return Redirect()->route('waktu_krs.add_waktu_krs')->with('error', 'Master Waktu KRS Gagal Disimpan Hubungi Administrator');
+        }
     }
 }

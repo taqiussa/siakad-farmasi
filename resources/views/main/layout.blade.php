@@ -74,6 +74,9 @@ License: For each use you must have a valid license purchased only from above li
     <script type="text/javascript" src="{{ url('admin/assets/plugins/custom/virtualselect/virtual-select.min.js') }}">
     </script>
 
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -167,6 +170,8 @@ License: For each use you must have a valid license purchased only from above li
     </script>
 
 
+
+
     @include('main.flash-message')
     @include('main.partials.theme-mode._init')
     @include('main.layout._default')
@@ -211,3 +216,4 @@ License: For each use you must have a valid license purchased only from above li
 
 </html>
 @include('main.modal')
+

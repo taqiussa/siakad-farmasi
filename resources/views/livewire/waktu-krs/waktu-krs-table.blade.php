@@ -17,7 +17,12 @@
         </div>
     </div>
     <div class="card-body card-scroll">
-
+        <form method="get" action="/waktu_krs">
+            <div class="d-flex align-items-center position-relative my-1">
+                <input wire:model.live.debounce.500ms="search" type="text" name="search" id="search"
+                    class="form-control form-control-solid w-250px ps-15" placeholder="Cari Nama Waktu KRS" />
+            </div>
+        </form>
         <table class="table table-row-bordered gy-5">
             <thead>
                 <tr class="fw-semibold fs-6 text-muted">
@@ -39,10 +44,10 @@
                         <td>{{ $item->nama_krs }} </td>
                         <td>{{ $item->nama_program_studi }} </td>
                         <td>{{ $item->nama_semester }} </td>
-                        <td>{{ $item->tgl_mulai }} </td>
-                        <td>{{ $item->tgl_selesai }} </td>
-                        <td>{{ $item->tgl_toleransi_mulai }} </td>
-                        <td>{{ $item->tgl_toleransi_selesai }} </td>
+                        <td>{{ date("d-m-Y g:i A", strtotime($item->tgl_mulai)) }} </td>
+                        <td>{{ date("d-m-Y g:i A", strtotime($item->tgl_selesai)) }} </td>
+                        <td>{{ date("d-m-Y g:i A", strtotime($item->tgl_toleransi_mulai)) }} </td>
+                        <td>{{ date("d-m-Y g:i A", strtotime($item->tgl_toleransi_selesai)) }} </td>
                         <td>{{ $item->status_data }} </td>
                         <td><a class="btn btn-success btn-xs" id="aksi- {{ $item->id_waktu_krs }}"
                                 href="{{ URL::to('waktu_krs/detail_matakuliah/' . $item->id_waktu_krs) }}">

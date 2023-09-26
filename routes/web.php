@@ -212,4 +212,4 @@ Route::post('/update_user/{id}', [App\Http\Controllers\backend\UsermanagementCon
 Route::get('/delete_user/{id}', [App\Http\Controllers\backend\UsermanagementController::class, 'UserDelete']);
 
 
-require __DIR__ . '/qius.php';
+require __DIR__ . '/waktu_krs.php';

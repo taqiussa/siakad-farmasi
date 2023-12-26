@@ -12,4 +12,4 @@ ke 3 step di atas untuk membuat sweetalert confirm dan toastr event success, err
 7. run composer install, tak tambahke package kanggo make trait by command php artisan make:trait TraitName
 
 8. Controller WaktuKrsController, membaca folder views waktu_remidi ojo bingung.
-9. config/app.php mengganti locale UTC jadi ASIA/JAKARTA untuk tanggal dan waktu
+9. config/app.php mengganti locale UTC jadi ASIA/JAKARTA untuk tanggal dan wakturun composer install

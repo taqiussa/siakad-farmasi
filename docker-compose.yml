@@ -11,12 +11,12 @@ services:
       #nama image hasil docker-compose build
       image: php-8:v1
       #nama container dari image web yang dijalankan
-      # container_name: "sia-akademik"
+      container_name: "siakad-akademik"
       #setting port yg bisa diakses dr host adalah 8000 
       #port 80 adalah port service webapp yang hanya dikenali di 
       #internal network antar container
       ports:
-         - 8092-8093:80
+         - 8020:80
       #persisten volume (tetap), Host : container
       #sangat penting tidak hanya menggunakan volume dalam container
       #karena volume yg ada pada container akan hilang saat 
@@ -53,6 +53,6 @@ volumes:
          # external : true
          driver: local
          driver_opts:
-            type: none
-            device: /Users/dhananghadiyanto/Documents/www/laravel/akademik/
+            type: nfs
+            device: ${PWD}
             o: bind

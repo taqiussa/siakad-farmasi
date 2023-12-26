@@ -20,7 +20,7 @@ if ($item['show'] == false) {
         <div class="col-xl-4">
             <div class=" {{ $item['required'] }} fs-6 fw-bold mt-2 mb-3 ">{{ $item['caption'] }}</div>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-8" wire:ignore>
             <input type="{{ $item['type'] }}" class="form-control {{ $item['class'] }}"
                 placeholder="{{ $item['placeholder'] }}" id="{{ $item['name'] }}" name="{{ $item['name'] }}"
                 {{ $item['property'] }} {{ $item['required'] }}
@@ -34,12 +34,12 @@ if ($item['show'] == false) {
     </div>
     @if ($item['class'] == 'datetime' || $item['class'] == 'date')
         @push('scripts')
-            <script>
+            <script type="text/javascript" data-navigate-once>
                 $(document).ready(function() {
                     $('#{{ $item['name'] }}').on('change', function(e) {
                         var data = document.getElementById("{{ $item['name'] }}").value;
-                        console.log(data);
-                        @this.set((this.name), data);
+                        
+                        // @this.set((this.name), data);
                     });
                 });
             </script>
@@ -72,10 +72,11 @@ if ($item['show'] == false) {
     @push('scripts')
         <script>
             $(document).ready(function() {
-                $('#{{ $item['name'] }}').select2();
+                $('#{{ $item['name'] }}').select2({});
                 $('#{{ $item['name'] }}').on('change', function(e) {
-                    var data = $(this).select2("val");
-                    @this.set((this.name), data);
+                    // var data = $(this).select2("val");
+                    // @this.set((this.name), data);
+                    @this.set('{{ $item['name'] }}',$(this).val())
                 });
             });
         </script>

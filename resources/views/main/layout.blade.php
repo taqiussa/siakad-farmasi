@@ -56,7 +56,16 @@ License: For each use you must have a valid license purchased only from above li
     <link href="{{ url('admin/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
+    <script  src="{{ url('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script  src="{{ url('admin/assets/js/scripts.bundle.js') }}"></script>
+
+    {{-- /Users/dhananghadiyanto/Documents/www/laravel/theme/public/admin/assets/plugins/custom/virtualselect --}}
+    <link rel="stylesheet" href="{{ url('admin/assets/plugins/custom/virtualselect/virtual-select.min.css') }}">
+    <script type="text/javascript" src="{{ url('admin/assets/plugins/custom/virtualselect/virtual-select.min.js') }}">
+    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script defer src="{{ url('admin/assets/js/js.js') }}" ></script>
+    {{-- @livewireScripts() --}}
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -66,108 +75,10 @@ License: For each use you must have a valid license purchased only from above li
     data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true"
     data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
 
-    <script src="{{ url('admin/assets/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ url('admin/assets/js/scripts.bundle.js') }}"></script>
+   
 
-    {{-- /Users/dhananghadiyanto/Documents/www/laravel/theme/public/admin/assets/plugins/custom/virtualselect --}}
-    <link rel="stylesheet" href="{{ url('admin/assets/plugins/custom/virtualselect/virtual-select.min.css') }}">
-    <script type="text/javascript" src="{{ url('admin/assets/plugins/custom/virtualselect/virtual-select.min.js') }}">
-    </script>
-
-    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
-
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $(".date").daterangepicker({
-                singleDatePicker: true,
-                showDropdowns: true,
-                minYear: 1960,
-                maxYear: parseInt(moment().format("YYYY"), 10),
-                locale: {
-                    format: 'DD-MM-YYYY'
-                },
-                timePicker: false,
-            });
-
-            $(".datetime").daterangepicker({
-                singleDatePicker: true,
-                showDropdowns: true,
-                minYear: 1960,
-                maxYear: parseInt(moment().format("YYYY"), 10),
-                locale: {
-                    format: 'DD-MM-YYYY hh:mm A'
-                },
-                timePicker: true,
-            });
-
-            VirtualSelect.init({
-                ele: '.virtual',
-                maxWidth: '850px',
-            });
-
-            $('.numberonly').keypress(function(e) {
-
-                var charCode = (e.which) ? e.which : event.keyCode
-                if (String.fromCharCode(charCode).match(/[^0-9]/g))
-
-                    return false;
-
-            });
-
-            $('.currency').keyup(function(e) {
-                $(this).val(format($(this).val()));
-            });
-
-        });
-
-
-        var format = function(num) {
-            var str = num.toString().replace("", ""),
-                parts = false,
-                output = [],
-                i = 1,
-                formatted = null;
-            if (str.indexOf(".") > 0) {
-                parts = str.split(".");
-                str = parts[0];
-            }
-            str = str.split("").reverse();
-            for (var j = 0, len = str.length; j < len; j++) {
-                if (str[j] != ",") {
-                    output.push(str[j]);
-                    if (i % 3 == 0 && j < (len - 1)) {
-                        output.push(",");
-                    }
-                    i++;
-                }
-            }
-            formatted = output.reverse().join("");
-            return ("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
-        };
-
-        // function loading() {
-        //     $(".btn").attr("disabled", true);
-        //     Swal.fire({
-        //         title: 'Mohon Tunggu !',
-        //         html: 'Data Sedang Diproses',
-        //         icon: 'info',
-        //         timerProgressBar: true,
-        //         allowOutsideClick: false,
-        //         didOpen: () => {
-        //             Swal.showLoading()
-
-        //         }
-        //     })
-        // }
-
-        // function finish() {
-        //     $(".btn").attr("disabled", false);
-        //     swal.close();
-        // }
-    </script>
+    
+    {{-- @endpush --}}
 
 
 
